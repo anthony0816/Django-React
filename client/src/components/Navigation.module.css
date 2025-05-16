@@ -1,0 +1,45 @@
+/* Contenedor del navbar */
+/* Contenedor del navbar */
+.navContainer {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: linear-gradient(to right, #141E30, #243B55);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+
+/* Logo */
+.navLogo {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.navLogo:hover {
+    transform: translateY(-2px);
+}
+
+/* Enlaces */
+.navLink {
+    text-decoration: none;
+    color: #00c9a7;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.navLink:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+

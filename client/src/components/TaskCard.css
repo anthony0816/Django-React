@@ -1,0 +1,145 @@
+.task-card {
+    background: rgba(25, 25, 35, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 12px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-width: 350px;
+    
+}
+
+.task-card:hover {
+    background: rgba(35, 35, 45, 0.8);
+    transform: translateY(-4px);
+}
+
+.task-status-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    opacity: 0.8;
+}
+
+.task-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.task-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: rgba(240, 240, 240, 0.8);
+}
+
+.task-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+}
+
+.task-status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.task-status-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+    
+}
+
+.task-buttons button {
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.task-buttons .delete-button {
+    background-color: #922;
+}
+.delete-button:hover{
+    background-color: #821111
+}
+
+.task-buttons .edit-button {
+    background-color: #047f8d;
+    color: white;
+}
+
+.task-buttons .edit-button:hover {
+    background-color: #036962;
+}
+
+/* Estilos para el modal de eliminación */
+.modal-eliminar {
+    
+    position: absolute;
+    top: 220%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    padding: 7px;
+    background:  #243B55;
+    border-radius: 10px;
+    
+    z-index: 1000;
+    text-align: center;
+    
+    transition: top 0.2s;
+}
+
+.modal-eliminar h4 {
+    font-size: 18px;
+    color: #eaeaea;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+
+.modal-eliminar button {
+    background: #036962;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0 30px;
+    margin-top: 10px;
+}
+
+.modal-eliminar button:hover {
+    background: #03524d;
+}
+#boton_aceptar{
+    background-color:#922 ; 
+    
+}
+#boton_aceptar:hover{
+    background-color: #821111
+}
+

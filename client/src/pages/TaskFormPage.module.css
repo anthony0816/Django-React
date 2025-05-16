@@ -1,0 +1,100 @@
+/* Contenedor general */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Ajusta altura para centrar mejor */
+    padding: 40px;
+    background: linear-gradient(to right, #141E30, #243B55);
+    
+}
+
+/* Estilo del formulario */
+.form {
+    max-width: 380px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    align-items: center;
+    
+    
+}
+
+.h1{
+    text-align: center;
+    
+}
+
+.label{
+    
+    width: 100%;
+    position: relative;
+    top: 17px;
+    right: 8px;
+    
+}
+/* Estilos de los inputs */
+.input, .textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.textarea {
+    resize: none;
+    min-height: 80px;
+}
+
+/* Checkbox y su contenedor */
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 15px;
+    border: 3px solid rgb(18, 160, 160);
+    border-radius: 10px;
+    padding: 7px;
+    transition: scale 0.15s;
+    
+}
+.checkboxContainer:hover{
+scale: 1.05;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    
+}
+
+/* Botón */
+.button {
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #00c9a7, #00a8ff);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.button:hover {
+    background: linear-gradient(to right, #00a8ff, #00c9a7);
+    transform: translateY(-2px);
+}
