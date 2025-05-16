@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllTask } from "../api/task.api";
-import { TaskCard } from "./taskCard";
+import { TaskCard } from "./TaskCard";
 
 export function TaskList(){
     const [tasks, setTasks] = useState([])
