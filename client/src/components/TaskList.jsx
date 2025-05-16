@@ -15,6 +15,11 @@ export function TaskList(){
         LoadTasks();
     },[]);
 
+    async function refreshDeleteTask(){
+        const res = await getAllTask()
+        setTasks(res.data)
+    }
+
     return (
         <div
             style={{
@@ -25,7 +30,7 @@ export function TaskList(){
             }}
         >
             {tasks.map(task => (
-                <TaskCard key={task.id} task={task} />
+                <TaskCard key={task.id} task={task} onTaskDeleted={refreshDeleteTask}/>
             ))}
         </div>
     );

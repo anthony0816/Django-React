@@ -3,12 +3,15 @@ import { deleteTask } from "../api/task.api";
 import { useNavigate } from "react-router-dom";
 import "./taskCard.css";
 
-export function TaskCard({ task }) {
+export function TaskCard({ task, onTaskDeleted }) {
     const navegate = useNavigate();
+    const root = document.documentElement;
+    const color = getComputedStyle(root).getPropertyValue('--primary');
     
-    function handleDelete(task_id){
+    async function handleDelete(task_id){
         
-        deleteTask(task_id)
+        await deleteTask(task_id)
+        await onTaskDeleted();
     }
 
     return (
@@ -23,7 +26,7 @@ export function TaskCard({ task }) {
             
             <h1 className="task-title">{task.title}</h1>
             
-            <p className="task-description">{task.description}</p>
+            <p className="task-description"> <strong><span style={{color:color}}>Description:</span></strong> {task.description? task.description : "empty"}</p>
             
             <div className="task-status">
                 <div className="task-status-indicator" 
