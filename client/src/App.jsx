@@ -4,10 +4,9 @@ import { TaskFormPage} from './pages/TaskFormPage'
 import { Navigation } from './components/Navigation'
 import { Presentacion } from './components/Presentasion'
 import { Editar } from './components/EditarPage'
-
 import { AuthProvider } from './components/AuthProvider '
-import { ProtectedRoutes } from './components/ProtectedRoutes '
 import { PrivateRoute } from './components/PrivateRoute'
+import { RegisterForm } from './components/RegisterForm'
 
 
   function App  () {
@@ -26,7 +25,7 @@ import { PrivateRoute } from './components/PrivateRoute'
               <Route path="/tasks" element={<PrivateRoute element={<TasksPage/>} />}/>
               <Route path="/taskForm" element={<PrivateRoute element={<TaskFormPage/>} />}/>
               <Route path="/task-edit/:id" element={<PrivateRoute element={<Editar/>} />}/>
-              
+              <Route path='/register-form' element={<RegisterForm/>}/>
           </Routes>
         </BrowserRouter>
       </AuthProvider>

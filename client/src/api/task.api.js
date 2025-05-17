@@ -97,10 +97,10 @@ export const update =(id,task)=>{
 }
 
 //--------AUTENTICAR USUARIO
-export const AutenticarUsuario=async (username,password)=>{ 
+export const AutenticarUsuario=async (username)=>{ 
     const respuesta = await axios.post("http://localhost:8000/tasks/user/", {
-            username,
-            password
+            username:username
+            
         }, {
             headers: {
                 "Content-Type": "application/json",  // Clave para que Django reconozca el JSON

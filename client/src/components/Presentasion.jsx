@@ -56,6 +56,11 @@ export function Presentacion(){
 
     }
 
+    const handleRegister = (e)=>{
+    e.preventDefault()
+    navigate("/register-form");
+    }
+
 
     return(
         <div className="presentacion-container">
@@ -75,7 +80,7 @@ export function Presentacion(){
                     <div id="respuesta" className="presentacion-response"></div>
                     
                     <div className='register-continer'>
-                        <button className=' register-button presentacion-button'>Registrarse</button>
+                        <button className=' register-button presentacion-button' onClick={handleRegister}>Registrarse</button>
                     </div>
                 </div>
             </form>

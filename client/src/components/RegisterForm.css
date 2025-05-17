@@ -1,0 +1,93 @@
+/* RegisterUser.module.css */
+
+.registerUser-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.registerUser-form {
+    background-color: #243B55;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registerUser-title {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.registerUser-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.registerUser-labelContraseña-container{
+    margin-top: 30px;
+}
+
+.registerUser-label {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.registerUser-input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #08888e;
+    background-color: #1e293b;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    color: wheat;
+}
+
+.registerUser-input:focus {
+    border-color: #4a90e2;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.registerUser-actions {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    align-items: center;
+    gap: 15px;
+}
+
+.registerUser-button {
+    background-color: #036962;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registerUser-button:hover {
+    background-color: #035651;
+}
+
+.registerUser-response {
+    font-size: 14px;
+    width: 80%;
+    border-radius: 13px;
+    color: #ffffff;
+    margin: auto;
+    text-align: center;
+}
+#usuario-valido-estado{
+    position: absolute;
+    top: 60px;
+}

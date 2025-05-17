@@ -3,11 +3,10 @@ from rest_framework import viewsets
 from .serializer import TaskSerializer
 from .models import Task
 from django.http import  JsonResponse
-from django.contrib.auth import authenticate, login,logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import AnonymousUser
 from rest_framework.permissions import IsAuthenticated
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 class TaskView(viewsets.ModelViewSet):
@@ -42,24 +41,18 @@ def VerificarUsuario(request):
 def AutenticarUsuario(request):
     data = json.loads(request.body)  # Decodifica el JSON
     
-    
     username = data.get('username')  
-    password = data.get('password')
-    user = authenticate(username = username, password = password)
-    if user is not None:
-        login(request,user)
-        if user.is_authenticated:
-            return JsonResponse({
-            'mensaje':"Succesfull",
-            'user': {
-                    'id': user.id,
-                    'username': user.username,
-                }
+    usuario = User.objects.filter(username = username).first()
+    
+    
+    if usuario is not None:
+        return JsonResponse({
+            'mensaje':"no valido"
         })
         
     else:
         return JsonResponse({
-            "mensaje":"Las Credenciales son incorrectas"
+            "mensaje":"valido"
         })
         
 def test(request):
