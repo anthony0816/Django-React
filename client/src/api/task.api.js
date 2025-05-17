@@ -8,13 +8,19 @@ var objetos = Array(0)
 
 //---------OBTENER TAREA
 export const getTask= async (id)=>{
-const res = await axios.get('http://localhost:8000/tasks/api/v1/tasks/' + id + '/')
+    const rawToken = localStorage.getItem("access_token")
+
+    const res = await axios.get('http://localhost:8000/tasks/api/v1/tasks/' + id + '/',{
+        headers: {
+        'Authorization': `Bearer ${rawToken}`
+        }
+    })
 
 console.log("respuesta de axios",res.data)
 return res.data
 }
 
-//---------OBTENER TODAS LAS TAREAS
+//---------OBTENER TODAS LAS TAREAS (solo para desarrolladores)
 export const  getAllTask = ()=> {
 return  axios.get('http://localhost:8000/tasks/api/v1/tasks/')
 }
@@ -39,12 +45,16 @@ export const getUserTasks =async ()=>{
 
 //---------ELIMINAR
 export const deleteTask=(id)=>{
-    return axios.delete('http://localhost:8000/tasks/api/v1/tasks/' + id + '/')
+    return axios.delete('http://localhost:8000/tasks/api/v1/tasks/' + id + '/',{
+        headers: {
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        }
+    })
 }
 
 //----------ELIMINAR TODAS
 export const deleteALL=async ()=>{
-    const res = await getAllTask()
+    const res = await getUserTasks()
     let tareas = res.data;
     
     for (let index = 0; index < tareas.length; index++) {
@@ -69,12 +79,20 @@ export const deshacer = ()=>{
 
 //---------CREAR NUEVA TAREA
 export const createTask=(task)=>{ 
-    axios.post("http://localhost:8000/tasks/api/v1/tasks/", task, );
+    axios.post("http://localhost:8000/tasks/api/v1/tasks/", task, {
+        headers: {
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        }
+    });
 };
 
 //--------UPDATE
 export const update =(id,task)=>{
-    const res = axios.put('http://localhost:8000/tasks/api/v1/tasks/' + id + '/',task)
+    const res = axios.put('http://localhost:8000/tasks/api/v1/tasks/' + id + '/',task , {
+        headers: {
+        'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+        }
+    })
     return res
 }
 
