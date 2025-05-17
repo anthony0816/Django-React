@@ -7,11 +7,12 @@ import { jwtDecode } from "jwt-decode";
 export function Navigation() {
 
         const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
-        
+        let is_staff = false
         try{
         const rawToken = localStorage.getItem('access_token')
         const token = jwtDecode(rawToken)
-        console.log("token 1234", token.user_id)
+        is_staff = token.is_staff
+        console.log("token 1234", is_staff)
         }catch(error){
             console.log("Error al obtener el token, ¿Esta autenticado?")
         }
@@ -33,7 +34,17 @@ export function Navigation() {
             <Link to={"/tasks"} className={styles.navLogo}>
                 <h1>Task App</h1>
             </Link>
-            <Link to={"/taskForm"} className={styles.navLink}>Create Task</Link>          
+            <Link to={"/taskForm"} className={styles.navLink}>Create Task</Link>    
+            {is_staff?( 
+                <>
+                <div>
+                    <Link to={"/admin"} className={styles.navLink}> Administrar Usuarios</Link> 
+                </div>
+                </>):
+                (<>
+                
+                </>
+            )}
             <button onClick={()=>handleLogout()} className={styles.navLink} >Log out</button>
             
             </>):(
