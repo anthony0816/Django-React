@@ -40,16 +40,13 @@ def VerificarUsuario(request):
 @csrf_exempt
 def AutenticarUsuario(request):
     data = json.loads(request.body)  # Decodifica el JSON
-    
     username = data.get('username')  
     usuario = User.objects.filter(username = username).first()
-    
     
     if usuario is not None:
         return JsonResponse({
             'mensaje':"no valido"
-        })
-        
+        }) 
     else:
         return JsonResponse({
             "mensaje":"valido"

@@ -7,11 +7,10 @@ export function RegisterForm(){
     
     const navegate = useNavigate()
     const [username, setUsername] = useState("");
-    console.log("input usuario", username)
+    
 
     async function loadAutenticarUsuario(){
         const res = await (await AutenticarUsuario(username)).data.mensaje
-        console.log("respuesta del backend",res)
         const alerta = document.getElementById("usuario-valido-estado")
         const button_submit = document.getElementById("button-submit")
 

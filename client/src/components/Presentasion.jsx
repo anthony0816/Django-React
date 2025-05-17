@@ -50,9 +50,6 @@ export function Presentacion(){
             inputUsername.style.color = "red"
             inputContraseña.style.color = "red" 
         }
-        
-
-        
 
     }
 
