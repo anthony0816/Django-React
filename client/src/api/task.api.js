@@ -1,4 +1,5 @@
 import axios from "axios"
+import { jwtDecode } from "jwt-decode";
 
 // Configurar Axios para enviar cookies en cada petición
 
@@ -17,6 +18,24 @@ return res.data
 export const  getAllTask = ()=> {
 return  axios.get('http://localhost:8000/tasks/api/v1/tasks/')
 }
+
+// OBTENER LAS TAREAS DEL USAUARIO AUTENTICADO 
+export const getUserTasks =async ()=>{
+    const rawToken = localStorage.getItem("access_token")
+    const token = jwtDecode(rawToken)
+    console.log("token token", token, "id", token.user_id )
+    const res = await axios.get('http://localhost:8000/tasks/api/v1/tasks/',{
+        params: {
+            user_id : token.user_id
+        },
+        headers: {
+        'Authorization': `Bearer ${rawToken}`
+        }
+    })
+    console.log("Tareas de cada Usuario",res.data)
+    return res
+}
+
 
 //---------ELIMINAR
 export const deleteTask=(id)=>{

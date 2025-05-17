@@ -6,13 +6,26 @@ from django.http import  JsonResponse
 from django.contrib.auth import authenticate, login,logout
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import AnonymousUser
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
 class TaskView(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
-
+    
+    
+    def get_queryset(self):
+        queryset = Task.objects.all()
+        user_id = self.request.query_params.get('user_id')
+        
+        if user_id:
+            try:
+                queryset = queryset.filter(user_id=int(user_id))  # 👈 ¡Cambio clave aquí!
+            except (ValueError, TypeError):
+                pass
+        
+        return queryset
 
 def VerificarUsuario(request):
     if isinstance(request.user, AnonymousUser):

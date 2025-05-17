@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { getAllTask } from "../api/task.api";
 import { TaskCard } from "./TaskCard";
+import { getUserTasks } from "../api/task.api";
 
 export function TaskList(){
     const [tasks, setTasks] = useState([])
     
     useEffect(()=>{
         async function LoadTasks(){
-            const res = await getAllTask()
+            const res = await getUserTasks()
             setTasks(res.data);
             console.log("enviando datos",res.data)
             
@@ -16,7 +17,7 @@ export function TaskList(){
     },[]);
 
     async function refreshDeleteTask(){
-        const res = await getAllTask()
+        const res = await getUserTasks()
         setTasks(res.data)
     }
 
