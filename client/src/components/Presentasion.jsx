@@ -61,7 +61,7 @@ export function Presentacion(){
         <div className="presentacion-container">
             <form onSubmit={handleSubmit} className="presentacion-form">
                 <h1 className="presentacion-title">Autenticarse</h1>
-
+                
                 <div className="presentacion-group">
                     <label  id='labelUsuario' className="presentacion-label"> Usuario
                         <input type="text" id="usuario" className="presentacion-input"/>
@@ -73,6 +73,10 @@ export function Presentacion(){
                 <div className="presentacion-actions">
                     <button type='submit' className="presentacion-button">Submit</button>
                     <div id="respuesta" className="presentacion-response"></div>
+                    
+                    <div className='register-continer'>
+                        <button className=' register-button presentacion-button'>Registrarse</button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -21,6 +21,25 @@
     font-weight: 600;
 }
 
+.register-continer{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.register-button{
+
+width: fit-content;
+align-self: flex-end    ;
+}
+.register-continer .register-button{
+    background-color: #0a538e;
+}
+.register-continer .register-button:hover{
+    background-color: #0a4779;
+}
+
 .presentacion-group {
     margin-bottom: 20px;
 }
