@@ -28,6 +28,7 @@ return  axios.get('http://localhost:8000/tasks/api/v1/tasks/')
 // OBTENER LAS TAREAS DEL USAUARIO AUTENTICADO 
 export const getUserTasks =async ()=>{
     const rawToken = localStorage.getItem("access_token")
+    console.log("rawtoken", rawToken)
     const token = jwtDecode(rawToken)
     console.log("token token", token, "id", token.user_id )
     const res = await axios.get('http://localhost:8000/tasks/api/v1/tasks/',{
@@ -118,10 +119,37 @@ export  const VerificarUsuario = async()=>{
     
 }
 
-/*
-export const apiTest =async ()=>{
-    const respuesta =  await axios.get("http://localhost:8000/tasks/test/")
-    console.log("respuesta de testing", respuesta)
+// Crear Usuario 
+export const CrearUsuario = async (username,password)=>{
+    await getCsrfToken();
+    
+    const getCSRFToken =()=>{
+        return document.cookie
+        .split('; ')
+        .find(row => row.startsWith('csrftoken='))
+        ?.split('=')[1];
+    }
+    const CSRFToken = getCSRFToken()
+    
+
+    const res = await axios.post("http://localhost:8000/tasks/create-user/",{
+        username:username,
+        password: password
+    },{
+        headers: {
+                'X-CSRFToken': CSRFToken,
+                "Content-Type": "application/json",  // Clave para que Django reconozca el JSON
+            }
+    })
+    return res;
 }
-*/
+
+
+const getCsrfToken = async () => {
+    const response = await fetch('http://localhost:8000/tasks/csrf-token/', { 
+        credentials: 'include'  
+        });
+    const data = await response.json();
+    
+};
 

@@ -2,36 +2,73 @@ import "./RegisterForm.css"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { AutenticarUsuario } from "../api/task.api"
+import { CrearUsuario } from "../api/task.api"
 
 export function RegisterForm(){
     
     const navegate = useNavigate()
     const [username, setUsername] = useState("");
-    
+    let primaryColor = getComputedStyle(root).getPropertyValue('--primary');
+    let red = getComputedStyle(root).getPropertyValue('--red');
 
     async function loadAutenticarUsuario(){
         const res = await (await AutenticarUsuario(username)).data.mensaje
         const alerta = document.getElementById("usuario-valido-estado")
         const button_submit = document.getElementById("button-submit")
-
+        const root = document.documentElement;
+        
         if (res == "no valido"){
             button_submit.type = "button"
-            alerta.style.color="red"
+            alerta.style.color= red
             alerta.textContent = "No valido, Ya existe ese usuario"
         }
-        if(res=="valido"){
-            button_submit.type = "submit"
+        else if(res == "valido"){
+            let username_sin_espacios = username.trim()
+            
+            if(username_sin_espacios.length <= 5){
+                button_submit.type = "button"
+                alerta.style.color= red
+                alerta.textContent = "Caracteres insuficientes"
+            }
+            else if(/\s/.test(username.trim())){
+                button_submit.type = "button"
+                alerta.style.color= red
+                alerta.textContent = "No debe contener espacios"
+            }
+            else{
+                button_submit.type = "submit"
+                alerta.style.color = primaryColor
+                alerta.textContent="valido"
+            }
+        }
+        else if(res == "vacio"){
             alerta.textContent=""
         }
     }
     loadAutenticarUsuario()
 
-    function HandleSubmit(e){
-        
+    async function HandleSubmit(e){
+        e.preventDefault()
+        // Campos de Contraseña y confirmar contraseña
+        const pas1 = document.getElementById("registerUser-contraseña").value
+        const pas2 = document.getElementById("registerUser-confirmar-contraseña").value
+        const alertp1p2 = document.querySelectorAll(".pasword_alert")
+        alertp1p2[0].style.color= red
+        alertp1p2[1].style.color= red
 
-        const contraseña = document.getElementById("registerUser-contraseña").value
-        const confirmar_contraseña = document.getElementById("registerUser-confirmar-contraseña").value
-
+        if (pas1 != pas2){
+            alertp1p2[0].textContent = "No coinciden"
+            alertp1p2[1].textContent = "No coinciden"
+        }
+        else if(pas1.length <= 4 || pas2 <= 4){
+            alertp1p2[0].textContent = "Más de 4 caracteres"
+            alertp1p2[1].textContent = "Más de 4 caracteres"
+        }
+        else{
+            const res = await CrearUsuario(username,pas1);
+            console.log("bienvenido",res.data)
+            navegate("/")
+        }
 
     }   
 
@@ -45,18 +82,21 @@ export function RegisterForm(){
                 required
                 onChange={(e)=>setUsername(e.target.value)}
                 />
-                <div id="usuario-valido-estado"></div>
+                <div><strong id="usuario-valido-estado" ></strong></div>
             </label>
 
             <div className="registerUser-labelContraseña-container">
                 
-                <label id="registerUser-labelContraseña" className="registerUser-label"> Contraseña
-                <input required type="password" id="registerUser-contraseña" className="registerUser-input"/>
-            </label>
-
-            <label id="registerUser-labelContraseña" className="registerUser-label">Confirmar Contraseña
-                <input required type="password" id="registerUser-confirmar-contraseña" className="registerUser-input"/>
-            </label>
+                <div className="pas_continer">
+                    <label id="registerUser-labelContraseña" className="registerUser-label"> Contraseña
+                    <input required type="password" id="registerUser-contraseña" className="registerUser-input"/>
+                    </label> <div><strong className="pasword_alert" ></strong></div>
+                </div>
+                <div className="pas_continer">    
+                    <label id="registerUser-labelContraseña" className="registerUser-label">Confirmar Contraseña
+                    <input required type="password" id="registerUser-confirmar-contraseña" className="registerUser-input"/>
+                    </label> <div><strong className="pasword_alert" ></strong></div>
+                </div>
             
             </div>
         </div>

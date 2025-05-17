@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import AnonymousUser
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 # Create your views here.
 class TaskView(viewsets.ModelViewSet):
@@ -42,8 +43,11 @@ def AutenticarUsuario(request):
     data = json.loads(request.body)  # Decodifica el JSON
     username = data.get('username')  
     usuario = User.objects.filter(username = username).first()
-    
-    if usuario is not None:
+    if username =="":
+        return JsonResponse({
+            'mensaje':"vacio"
+        }) 
+    elif usuario is not None:
         return JsonResponse({
             'mensaje':"no valido"
         }) 
@@ -64,4 +68,27 @@ def test(request):
             "mensaje": "Si esta autenticado y este es el usuario: ",
             "user": user
         })
-
+@csrf_exempt
+def CrearUsuario(request):
+    if request.method != 'POST':
+        return JsonResponse({"error": "Método no permitido"}, status=405)
+    
+    data = json.loads(request.body)  # Decodifica el JSON
+    username = data.get('username')
+    password = data.get('password')
+    
+    user = User.objects.create_user(
+    username= username,
+    password= password
+    )
+    return JsonResponse({
+        "mensaje":"hecho",
+        "user":{
+            "id": user.id,
+            "username": user.username
+        }
+    }, status=201)
+    
+@ensure_csrf_cookie
+def csrf_token_view(request):
+    return JsonResponse({"csrfToken": "Obtenido automáticamente"})

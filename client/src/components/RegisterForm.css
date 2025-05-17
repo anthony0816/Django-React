@@ -90,4 +90,13 @@
 #usuario-valido-estado{
     position: absolute;
     top: 60px;
+    
+}
+.pas_continer{
+    position: relative;
+}
+.pasword_alert{
+position: relative;
+top: -22px;
+
 }
