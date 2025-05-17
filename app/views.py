@@ -1,6 +1,6 @@
 import json
 from rest_framework import viewsets
-from .serializer import TaskSerializer
+from .serializers import TaskSerializer
 from .models import Task
 from django.http import  JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -8,7 +8,8 @@ from django.contrib.auth.models import AnonymousUser
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import MyTokenObtainPairSerializer
 # Create your views here.
 class TaskView(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
@@ -26,6 +27,9 @@ class TaskView(viewsets.ModelViewSet):
                 pass
         
         return queryset
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 def VerificarUsuario(request):
     if isinstance(request.user, AnonymousUser):
