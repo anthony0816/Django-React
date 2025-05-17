@@ -2,10 +2,20 @@ import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css"; 
 import { AuthContext } from "./AuthProvider ";
 import { useContext } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export function Navigation() {
 
         const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+        
+        try{
+        const rawToken = localStorage.getItem('access_token')
+        const token = jwtDecode(rawToken)
+        console.log("token 1234", token.user_id)
+        }catch(error){
+            console.log("Error al obtener el token, ¿Esta autenticado?")
+        }
+        
 
         const handleLogout = () => {
     localStorage.removeItem('access_token');

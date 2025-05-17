@@ -7,6 +7,7 @@ import { Editar } from './components/EditarPage'
 import { AuthProvider } from './components/AuthProvider '
 import { PrivateRoute } from './components/PrivateRoute'
 import { RegisterForm } from './components/RegisterForm'
+import { Admin } from './pages/Administradores'     
 
 
   function App  () {
@@ -26,6 +27,8 @@ import { RegisterForm } from './components/RegisterForm'
               <Route path="/taskForm" element={<PrivateRoute element={<TaskFormPage/>} />}/>
               <Route path="/task-edit/:id" element={<PrivateRoute element={<Editar/>} />}/>
               <Route path='/register-form' element={<RegisterForm/>}/>
+              <Route path='/admin' element={<Admin/>}/>
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>
