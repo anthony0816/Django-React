@@ -55,7 +55,11 @@ export function EditarUser({ user , onClose} ) {
                 Guardar Cambios
             </button>
 
-            <button type="button" className="form-submit" onClick={onClose}>
+            <button type="button" className="delette-button" >
+                Eliminar
+            </button>
+
+            <button type="button" className=" cancelar-button " onClick={onClose}>
                 Cancelar
             </button>
 

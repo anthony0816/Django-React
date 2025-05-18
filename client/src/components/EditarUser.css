@@ -129,3 +129,29 @@
         width: 100%;
     }
 }
+
+.cancelar-button{
+    background: linear-gradient(45deg, #4a6cc9, #6c5dd3);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+    margin-left: 8rem;
+}
+
+.delette-button{
+    background: linear-gradient(45deg, #df0a068f, #8f0f1ea8);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+    
+}

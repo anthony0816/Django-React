@@ -24,7 +24,7 @@ class TaskView(viewsets.ModelViewSet):
         
         if user_id:
             try:
-                queryset = queryset.filter(user_id=int(user_id))  # 👈 ¡Cambio clave aquí!
+                queryset = queryset.filter(user_id=int(user_id)) 
             except (ValueError, TypeError):
                 pass
         

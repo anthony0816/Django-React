@@ -1,11 +1,11 @@
 // src/context/AuthContext.jsx
 import { createContext, useState, useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode'; // Necesitarás instalar: npm install jwt-decode
+import { jwtDecode } from 'jwt-decode'; 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [loading, setLoading] = useState(true); // Para mostrar carga mientras verificamos
+    const [loading, setLoading] = useState(true); 
     
     useEffect(() => {
     const verifyToken = () => {
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         }
 
         try {
-        // Verificar si el token ha expirado
+        
         const decoded = jwtDecode(token);
         const isExpired = decoded.exp * 1000 < Date.now();
         
