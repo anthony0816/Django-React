@@ -10,7 +10,7 @@ export function TaskList(){
         async function LoadTasks(){
             const res = await getUserTasks()
             setTasks(res.data);
-            console.log("enviando datos",res.data)
+            
             
         }
         LoadTasks();

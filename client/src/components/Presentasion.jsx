@@ -26,7 +26,7 @@ export function Presentacion(){
         
         try{
             const respuesta = await login( usuario, contraseña )
-        console.log("respuesta de loging", respuesta)
+        
 
         const access = respuesta.data.access
         const refresh = respuesta.data.refresh

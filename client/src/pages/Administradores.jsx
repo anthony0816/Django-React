@@ -11,7 +11,7 @@ export function Admin(){
         async function loadAllUsers(){
             const res = await getAllUsers();
             setUsers(res)
-            console.log(res)
+            
         }   
     loadAllUsers()
     },[])

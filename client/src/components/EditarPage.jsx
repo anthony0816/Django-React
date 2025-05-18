@@ -24,7 +24,7 @@ export function Editar() {
         LoadTask();
     }, [id]);
 
-    console.log("ahora sí", task);
+    
 
     return (
         <div className="edit-wrapper" >
@@ -107,9 +107,9 @@ async function HandleSubmit(event, task) {
         description: document.querySelector("#description").value,
         done: document.querySelector("#done").checked
     }
-    console.log("tarea vieja",oldTask)
+    
     if((oldTask.title == newTask.title)&&(oldTask.description == newTask.description)&&(oldTask.done == newTask.done)){
-        console.log("siiiiiiiiiiii")
+        
     
     }
     else{

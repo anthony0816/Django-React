@@ -1,7 +1,7 @@
 import "./EditarUser.css"
 
 export function EditarUser({ user , onClose} ) {
-    console.log("usuario", user);
+    
     
     return (
         <form className="user-form">

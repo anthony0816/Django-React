@@ -66,7 +66,7 @@ export function RegisterForm(){
         }
         else{
             const res = await CrearUsuario(username,pas1);
-            console.log("bienvenido",res.data)
+            
             navegate("/")
         }
 

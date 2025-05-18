@@ -12,9 +12,9 @@ export function Navigation() {
         const rawToken = localStorage.getItem('access_token')
         const token = jwtDecode(rawToken)
         is_staff = token.is_staff
-        console.log("token 1234", is_staff)
+        
         }catch(error){
-            console.log("Error al obtener el token, ¿Esta autenticado?")
+            
         }
         
 
@@ -23,7 +23,7 @@ export function Navigation() {
     localStorage.removeItem('refresh_token')
     setIsAuthenticated(false);
     };
-    console.log("estado de autenticacion", isAuthenticated)
+    
     
     return (
         <nav className={styles.navContainer}>

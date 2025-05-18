@@ -16,7 +16,6 @@ export const getTask= async (id)=>{
         }
     })
 
-console.log("respuesta de axios",res.data)
 return res.data
 }
 
@@ -28,9 +27,8 @@ return  axios.get('http://localhost:8000/tasks/api/v1/tasks/')
 // OBTENER LAS TAREAS DEL USAUARIO AUTENTICADO 
 export const getUserTasks =async ()=>{
     const rawToken = localStorage.getItem("access_token")
-    console.log("rawtoken", rawToken)
     const token = jwtDecode(rawToken)
-    console.log("token token", token, "id", token.user_id )
+    
     const res = await axios.get('http://localhost:8000/tasks/api/v1/tasks/',{
         params: {
             user_id : token.user_id
@@ -39,7 +37,7 @@ export const getUserTasks =async ()=>{
         'Authorization': `Bearer ${rawToken}`
         }
     })
-    console.log("Tareas de cada Usuario",res.data)
+    
     return res
 }
 
@@ -114,7 +112,7 @@ export const AutenticarUsuario=async (username)=>{
 //------------VERIFICAR USUARIO
 export  const VerificarUsuario = async()=>{
     const respuesta =  await axios.get("http://localhost:8000/tasks/verificar-user/").data.mensaje
-    console.log("Esta autenticado ?", respuesta)
+    
     return true
     
 }

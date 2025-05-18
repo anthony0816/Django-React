@@ -20,7 +20,7 @@ export function TaskFormPage() {
         description: description, 
         done: done        
     };
-    console.log("Enviando tarea:", task);
+    
     createTask(task);
         
 }
