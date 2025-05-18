@@ -35,16 +35,12 @@ export function Navigation() {
                 <h1>Task App</h1>
             </Link>
             <Link to={"/taskForm"} className={styles.navLink}>Create Task</Link>    
-            {is_staff?( 
-                <>
+            {is_staff && (
                 <div>
-                    <Link to={"/admin"} className={styles.navLink}> Administrar Usuarios</Link> 
+                    <Link to={"/admin"} className={styles.navLink}>Administrar Usuarios</Link>
                 </div>
-                </>):
-                (<>
-                
-                </>
             )}
+
             <button onClick={()=>handleLogout()} className={styles.navLink} >Log out</button>
             
             </>):(
