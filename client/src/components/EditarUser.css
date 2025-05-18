@@ -1,0 +1,130 @@
+/* Manteniendo tu paleta de colores */
+.user-form {
+    background: #1a1d2b;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-left: 4px solid #4a6cc9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+    max-width: 600px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.form-label {
+    min-width: 100px;
+    color: #7f8fb1;
+    font-family: 'Fira Code', monospace;
+}
+
+.form-input {
+    flex: 1;
+    background: #252941;
+    border: 1px solid #2d3250;
+    border-radius: 6px;
+    padding: 0.6rem;
+    color: #6c8dff;
+    font-size: 0.95rem;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #4a6cc9;
+    box-shadow: 0 0 0 2px rgba(74, 108, 201, 0.3);
+}
+
+.checkbox-row {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2d3250;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.form-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #2d3250;
+    border-radius: 4px;
+    background: #252941;
+    cursor: pointer;
+}
+
+.form-checkbox:checked {
+    background: #4a6cc9;
+}
+
+/* Tags con tus estilos originales */
+.staff-tag, .superuser-tag {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.staff-yes {
+    background: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+    border: 1px solid #4caf5050;
+}
+
+.staff-no {
+    background: rgba(244, 67, 54, 0.15);
+    color: #f44336;
+    border: 1px solid #f4433650;
+}
+
+.superuser-yes {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    border: 1px solid #ffc10750;
+    text-transform: uppercase;
+}
+
+.superuser-no {
+    background: rgba(158, 158, 158, 0.15);
+    color: #9e9e9e;
+    border: 1px solid #9e9e9e50;
+}
+
+.form-submit {
+    background: linear-gradient(45deg, #4a6cc9, #6c5dd3);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.form-submit:hover {
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .form-input {
+        width: 100%;
+    }
+}

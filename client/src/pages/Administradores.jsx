@@ -2,6 +2,7 @@ import { getAllUsers } from "../api/User.api"
 import { useState } from "react";
 import { useEffect } from "react";
 import { UserCard } from "../components/UserCard";
+import "./Administradores.css"
 
 export function Admin(){
     const [users,setUsers] = useState([])
@@ -17,7 +18,7 @@ export function Admin(){
     
     
 
-return( <div>
+return( <div className="UserCard-continer" >
         {users.map(user =>(
             <UserCard user = {user}/>
         ))}

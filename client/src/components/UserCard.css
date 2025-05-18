@@ -1,18 +1,47 @@
 /* UserCard.css - Estilo Horizontal Interno */
 .user-card {
-    
+    height: 130px;
     background: #1a1d2b;
-    
     border-radius: 12px;
     padding: 1.5rem;
     margin: 1rem;
     border-left: 4px solid #05897e;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     color: #e0e0e0;
-    /* Nuevo: Contenido en fila */
     display: flex;
     flex-direction: column;
+    transition: scale 0.2s , background 0.2s , height 0.5s;
+    overflow: hidden;
 }
+
+.user-card:hover{
+scale: 1.005;
+
+
+}
+
+.user-data{
+  top: 0px;
+  
+  position: relative;
+  transition: top 0.5s;
+
+}
+
+.user-data-hidden{
+top: -120px;
+}
+
+.onTouch-Card{
+  height: 450px;
+}
+
+.onTouch-Card:hover{
+background-color: #1a1d2b;
+scale: 1;
+}
+
+
 
 .user-card-header {
     display: flex;
@@ -98,15 +127,29 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .user-info {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+
+.editar-user-continer{
+  position: relative;
+  top: 0;
+  width: 400px;
+  overflow: hidden;
+  margin: auto;
+  z-index: 10;
+  transition: top 0.5s , width 0.5s;
+
+}
+.editar-user-continer-active{
+width: 700px;
+top: -60px;
+}
+
+.user-editar{
+  cursor: pointer;
+}
+.user-editar:hover{
+  color: #9b9b9b;
+}
+.cerrar-boton{
+  width: 100px;
   
-  .user-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
 }
