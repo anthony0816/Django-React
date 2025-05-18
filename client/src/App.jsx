@@ -27,7 +27,7 @@ import { Admin } from './pages/Administradores'
               <Route path="/taskForm" element={<PrivateRoute element={<TaskFormPage/>} />}/>
               <Route path="/task-edit/:id" element={<PrivateRoute element={<Editar/>} />}/>
               <Route path='/register-form' element={<RegisterForm/>}/>
-              <Route path='/admin' element={<Admin/>}/>
+              <Route path='/admin' element={<PrivateRoute element={<Admin/>}/>}/>
 
           </Routes>
         </BrowserRouter>

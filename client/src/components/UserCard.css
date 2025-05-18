@@ -1,0 +1,112 @@
+/* UserCard.css - Estilo Horizontal Interno */
+.user-card {
+    
+    background: #1a1d2b;
+    
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-left: 4px solid #05897e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+    /* Nuevo: Contenido en fila */
+    display: flex;
+    flex-direction: column;
+}
+
+.user-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-name {
+  color: #fff;
+  font-size: 1.4rem;
+  background: linear-gradient(45deg, #05897e, #05897e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+.user-info {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.user-info > div {
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Estilos específicos (colores igual que antes) */
+.user-id {
+    
+    width: 70px;
+    background: #2d3250;
+    color: #7f8fb1;
+    font-family: 'Fira Code', monospace;
+    display: flex;
+    justify-content: center;
+}
+
+.user-email {
+  background: #252941;
+  color: #6c8dff;
+  width: 200px;
+  overflow: hidden;
+}
+
+.staff-yes {
+  background: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+  border: 1px solid #4caf5050;
+}
+
+.staff-no{
+    background: rgba(218, 40, 9, 0.15);
+  color: #ee0808;
+  border: 1px solid #bd211050;
+}
+
+.superuser-yes {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border: 1px solid #ffc10750;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.superuser-no{
+    background: #252941;
+    color: #6c8dff;
+  
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Efectos hover */
+.user-info > div:hover {
+  filter: brightness(1.2);
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .user-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
