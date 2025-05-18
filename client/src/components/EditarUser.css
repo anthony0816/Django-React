@@ -110,6 +110,7 @@
     font-weight: 600;
     margin-top: 1rem;
     transition: transform 0.2s;
+    margin-right: 20px;
 }
 
 .form-submit:hover {
