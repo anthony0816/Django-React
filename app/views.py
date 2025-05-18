@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import MyTokenObtainPairSerializer
+from .serializers import UserSerializer
+from rest_framework.permissions import IsAdminUser 
 # Create your views here.
 class TaskView(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
@@ -27,6 +29,14 @@ class TaskView(viewsets.ModelViewSet):
                 pass
         
         return queryset
+    
+class UserView(viewsets.ModelViewSet):
+    queryset = User.objects.all() 
+    print(User.objects.all())
+    serializer_class = UserSerializer   
+    permission_classes = [IsAdminUser]
+    
+    
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer

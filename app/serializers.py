@@ -10,8 +10,9 @@ class TaskSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User        
-        fields = '__all__'
+        model = User
+        fields = ['id', 'username', 'email', 'is_staff', 'is_superuser']
+        extra_kwargs = {'password': {'write_only': True}}
         
 
 
