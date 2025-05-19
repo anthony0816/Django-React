@@ -1,7 +1,7 @@
 import "./UserCard.css"
 import { EditarUser } from "./EditarUser"
 import { useState } from "react"
-export function UserCard({ user }) {
+export function UserCard({ user , Refresh}) {
     const[estado,setEstado] = useState(false)
     
     
@@ -71,7 +71,7 @@ export function UserCard({ user }) {
             </div>
             </div>
             <div className= {`editar-user-continer editar-user-continer${user.id}`} >
-            <EditarUser user ={user} onClose= {cerrar} />
+            <EditarUser user ={user} onClose= {cerrar} onRefresh={Refresh} />
             </div>
         </div>
         

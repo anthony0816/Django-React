@@ -32,7 +32,6 @@ class TaskView(viewsets.ModelViewSet):
     
 class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all() 
-    print(User.objects.all())
     serializer_class = UserSerializer   
     permission_classes = [IsAdminUser]
     

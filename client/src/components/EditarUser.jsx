@@ -1,7 +1,9 @@
 import "./EditarUser.css"
+import { uptadeUser } from "../api/User.api";
 
-export function EditarUser({ user , onClose} ) {
+export function EditarUser({ user , onClose, onRefresh} ) {
     
+
     function HandleSubmit(e){
         e.preventDefault();
         const user_id = user.id
@@ -9,10 +11,26 @@ export function EditarUser({ user , onClose} ) {
         const email = document.querySelector(`[name="email${user.id}"]`);
         const is_staff = document.querySelector(`[name="is_staff${user.id}"]`);
         const is_superuser = document.querySelector(`[name="is_superuser${user.id}"]`);
-        console.log("user",user_id, username.value,email.value,is_staff.checked,is_superuser.checked)
-        const User = {
 
+        const newUser = {
+            id:user_id,
+            username: username.value,
+            email:email.value,
+            is_staff:is_staff.checked,
+            is_superuser:is_superuser.checked
         }
+        console.log("usuario de la card", user)
+        console.log("nuevo usuario", newUser)
+        async function loadUpdate(){
+            const res = await uptadeUser(newUser);
+            
+            if(res)onRefresh(onClose);
+            if(!res){
+                console.log("error")
+            }
+            
+        }
+        loadUpdate();
     }
     
     return (
