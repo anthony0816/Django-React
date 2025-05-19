@@ -4,14 +4,17 @@ import { useState } from "react"
 export function UserCard({ user }) {
     const[estado,setEstado] = useState(false)
     
-    let card = document.querySelector(`.card${user.id}`)
-    let cards = document.querySelectorAll(".user-card")
-    let data = document.querySelector(`.user-data${user.id}`)
-    let datas = document.querySelectorAll(".user-data")
-    let form = document.querySelector(`.editar-user-continer${user.id}`)
-    let forms = document.querySelectorAll(".editar-user-continer")
+    
     
     function handleClick(){
+        
+        let card = document.querySelector(`.card${user.id}`)
+        let cards = document.querySelectorAll(".user-card")
+        let data = document.querySelector(`.user-data${user.id}`)
+        let datas = document.querySelectorAll(".user-data")
+        let form = document.querySelector(`.editar-user-continer${user.id}`)
+        let forms = document.querySelectorAll(".editar-user-continer")
+        
         datas.forEach((data)=>{
         data.classList.remove("user-data-hidden")
         })
@@ -27,6 +30,10 @@ export function UserCard({ user }) {
     }
     
     function cerrar(){
+        let card = document.querySelector(`.card${user.id}`)
+        let data = document.querySelector(`.user-data${user.id}`)
+        let form = document.querySelector(`.editar-user-continer${user.id}`)
+        
         card.classList.remove("onTouch-Card")
         data.classList.remove("user-data-hidden")
         form.classList.remove("editar-user-continer-active")
