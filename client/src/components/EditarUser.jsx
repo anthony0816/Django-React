@@ -1,8 +1,11 @@
 import "./EditarUser.css"
 import { uptadeUser } from "../api/User.api";
+import { ModalUserEliminar } from "./ModalUserEliminar";
+import { useState } from "react";
+import { DeleteUser } from "../api/User.api";
 
 export function EditarUser({ user , onClose, onRefresh} ) {
-    
+    const [estado,setEstado] = useState(false)
 
     function HandleSubmit(e){
         e.preventDefault();
@@ -31,6 +34,20 @@ export function EditarUser({ user , onClose, onRefresh} ) {
             
         }
         loadUpdate();
+    }
+
+    function CloseState(){
+        return(
+            setEstado(!estado)
+        )
+    }
+
+    async function onDelete(){
+        const res = await DeleteUser(user.id)
+        if(res.status == 204){
+            onRefresh(onClose)
+            CloseState()
+        }   
     }
     
     return (
@@ -85,7 +102,7 @@ export function EditarUser({ user , onClose, onRefresh} ) {
                 Guardar Cambios
             </button>
 
-            <button type="button" className="delette-button" >
+            <button type="button" className="delette-button" onClick={CloseState} >
                 Eliminar
             </button>
 
@@ -93,7 +110,7 @@ export function EditarUser({ user , onClose, onRefresh} ) {
                 Cancelar
             </button>
 
-
+        {estado && <ModalUserEliminar onCancel={CloseState} onConfirm={onDelete} />}
         </form>
     );
 }

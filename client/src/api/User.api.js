@@ -55,3 +55,27 @@ export const uptadeUser = async (user)=>{
         console.error("Error al obtener usuarios:", error.response?.data || error.message);
     }
 }
+
+// Eliminar usuario
+export const DeleteUser = async (user_id) => {
+    try {
+        
+        const token = localStorage.getItem("access_token"); 
+        if (!token) throw new Error("No hay token, el usuario no está autenticado");
+        
+        
+        const response = await axios.delete("http://localhost:8000/tasks/api/v1/users/"+user_id+"/", {
+            headers: {
+                Authorization: `Bearer ${token}`, 
+                "Content-Type": "application/json",
+            },
+            withCredentials: true,
+        });
+
+        
+        return response;
+
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error.response?.data || error.message);
+    }
+};

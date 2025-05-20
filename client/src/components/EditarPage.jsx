@@ -24,6 +24,28 @@ export function Editar() {
         LoadTask();
     }, [id]);
 
+    async function HandleSubmit(e, task) {
+    e.preventDefault(); // Evita que el formulario recargue la página
+    const id = task.id
+    const oldTask =  await getTask(id)
+    const newTask ={
+        title: document.querySelector("#title").value ,
+        description: document.querySelector("#description").value,
+        done: document.querySelector("#done").checked
+    }
+    
+    if((oldTask.title == newTask.title)&&(oldTask.description == newTask.description)&&(oldTask.done == newTask.done)){
+        return
+    }
+    else{
+        await update(id,newTask) // para saber si se esta pasando bien
+        const modal =document.querySelector("#modal")
+        const background = document.querySelector("#main_continer")
+        modal.style.display="block"
+        background.style.display="none"
+    }
+}
+
     
 
     return (
@@ -98,28 +120,3 @@ export function Editar() {
     );
 }
 
-async function HandleSubmit(event, task) {
-    event.preventDefault(); // Evita que el formulario recargue la página
-    const id = task.id
-    const oldTask =  await getTask(id)
-    const newTask ={
-        title: document.querySelector("#title").value ,
-        description: document.querySelector("#description").value,
-        done: document.querySelector("#done").checked
-    }
-    
-    if((oldTask.title == newTask.title)&&(oldTask.description == newTask.description)&&(oldTask.done == newTask.done)){
-        
-    
-    }
-    else{
-        const res = await update(id,newTask) // para saber si se esta pasando bien
-        const modal =document.querySelector("#modal")
-        const background = document.querySelector("#main_continer")
-        modal.style.display="block"
-        background.style.display="none"
-    }
-    
-    
-
-}

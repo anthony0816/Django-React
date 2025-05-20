@@ -38,7 +38,7 @@ export function UserCard({ user , Refresh}) {
         window.scrollTo({ top: posicion, behavior: "smooth" });
     }
 
-    function cerrar(){
+    function onClose(){
         let card = document.querySelector(`.card${user.id}`)
         let data = document.querySelector(`.user-data${user.id}`)
         let form = document.querySelector(`.editar-user-continer${user.id}`)
@@ -71,7 +71,7 @@ export function UserCard({ user , Refresh}) {
             </div>
             </div>
             <div className= {`editar-user-continer editar-user-continer${user.id}`} >
-            <EditarUser user ={user} onClose= {cerrar} onRefresh={Refresh} />
+            <EditarUser user ={user} onClose= {onClose} onRefresh={Refresh} />
             </div>
         </div>
         
