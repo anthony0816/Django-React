@@ -1,10 +1,7 @@
 import "./UserCard.css"
 import { EditarUser } from "./EditarUser"
-import { useState } from "react"
+
 export function UserCard({ user , Refresh}) {
-    const[estado,setEstado] = useState(false)
-    
-    
     
     function handleClick(){
         
@@ -15,6 +12,8 @@ export function UserCard({ user , Refresh}) {
         let form = document.querySelector(`.editar-user-continer${user.id}`)
         let forms = document.querySelectorAll(".editar-user-continer")
         
+        centrar();
+
         datas.forEach((data)=>{
         data.classList.remove("user-data-hidden")
         })
@@ -27,15 +26,7 @@ export function UserCard({ user , Refresh}) {
         card.classList.add("onTouch-Card")
         data.classList.add("user-data-hidden")
         form.classList.add("editar-user-continer-active")
-    }
-    
-    function centrar() {
-        const div = document.querySelector(`.card${user.id}`);
-        if (!div) return; 
-        
-        const posicion = div.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 5);
-
-        window.scrollTo({ top: posicion, behavior: "smooth" });
+        QuitarCentrar();   
     }
 
     function onClose(){
@@ -46,12 +37,31 @@ export function UserCard({ user , Refresh}) {
         card.classList.remove("onTouch-Card")
         data.classList.remove("user-data-hidden")
         form.classList.remove("editar-user-continer-active")
+        card.classList.add(`centrar${user.id}`)
+        card.classList.remove(`no-centrar${user.id}`)
+    }
+
+    function centrar() {
+        const div = document.querySelector(`.centrar${user.id}`);
+        if (!div) return; 
+        
+        const posicion = div.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 5);
+
+        window.scrollTo({ top: posicion, behavior: "smooth" });
+    }
+
+    function QuitarCentrar(){
+        const card = document.querySelector(".onTouch-Card")
+        if(card){
+            card.classList.add(`no-centrar${user.id}`)
+            card.classList.remove(`centrar${user.id}`)
+        }
         
     }
     
     return (
     
-        <div className= {`user-card card${user.id} `}  onClick={centrar}  >
+        <div className= {`user-card card${user.id} centrar${user.id} `}  >
             <h2 className="user-name">{user.username}</h2>
             <div className={` user-data user-data${user.id} `}>
                 <div className="user-card-header">
